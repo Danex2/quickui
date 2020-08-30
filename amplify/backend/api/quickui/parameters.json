@@ -1,0 +1,11 @@
+{
+    "AppSyncApiName": "quickui",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": "false",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authquickui759544c5",
+            "Outputs.UserPoolId"
+        ]
+    }
+}

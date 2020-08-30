@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-quickui-dev-15347-authRole",
+            "UnauthRoleArn": "arn:aws:iam::463447725099:role/amplify-quickui-dev-15347-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::463447725099:role/amplify-quickui-dev-15347-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-quickui-dev-15347-deployment",
+            "UnauthRoleName": "amplify-quickui-dev-15347-unauthRole",
+            "StackName": "amplify-quickui-dev-15347",
+            "StackId": "arn:aws:cloudformation:us-east-1:463447725099:stack/amplify-quickui-dev-15347/2cd75180-ea85-11ea-87f4-12275bc6e1ef",
+            "AmplifyAppId": "d3vtz7bmt2l79k"
+        },
+        "categories": {
+            "auth": {
+                "quickui759544c5": {}
+            }
+        }
+    }
+}

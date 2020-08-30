@@ -1,0 +1,23 @@
+type UI
+@model
+@auth(rules: [{ allow: owner, operations: [create, delete, update] }])
+@key(
+  name: "uiByClassByRole"
+  fields: ["class", "role"]
+  queryField: "uiByClassByRole"
+)
+@key(name: "uiBydate", fields: ["createdOn"], queryField: "uiByDate") {
+  id: ID!
+  title: String!
+  class: String!
+  role: [Role!]!
+  code: String!
+  description: String!
+  createdOn: AWSDateTime!
+}
+
+enum Role {
+  TANK
+  HEALER
+  DPS
+}
