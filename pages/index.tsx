@@ -67,7 +67,7 @@ const posts = [
 const Index = () => (
   <Layout title="Home">
     <Navbar />
-    <div className="flex flex-col mt-10 py-4 lg:py-0 px-5 lg:px-10">
+    <div className="flex flex-col mt-10 py-4 lg:py-0 px-2 lg:px-10">
       <div className="flex space-x-3 mb-3 hidden">
         <select className="w-auto form-select">
           <option value="" disabled selected>

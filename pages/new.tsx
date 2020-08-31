@@ -5,8 +5,8 @@ export default function New() {
   return (
     <Layout title="Create a new UI Post">
       <Navbar />
-      <div className="flex justify-center mt-20">
-        <form className="flex flex-col w-full p-3 lg:w-1/2">
+      <div className="mt-20 max-w-6xl mx-auto">
+        <form className="flex flex-col p-3">
           <textarea
             rows={10}
             placeholder="Enter a description about your UI setup"

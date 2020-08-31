@@ -1,24 +1,48 @@
 import React from "react";
 import Link from "next/link";
 
+const loggedIn = false;
+
 export default function Navbar() {
   const [open, setOpen] = React.useState(false);
+
   return (
     <>
       <nav className="bg-gray-900 text-white flex justify-between px-10 py-5 items-center">
         <h1 className="text-3xl font-bold">QuickUI</h1>
         <div className="space-x-4 uppercase text-sm font-bold hidden sm:block">
-          <Link href="/">
-            <a className="hover:bg-gray-700 p-2 rounded duration-150">search</a>
-          </Link>
-          <Link href="/new">
-            <a className="hover:bg-gray-700 p-2 rounded duration-150">
-              create new post
-            </a>
-          </Link>
-          <Link href="#">
-            <a className="hover:bg-gray-700 p-2 rounded duration-150">logout</a>
-          </Link>
+          {loggedIn ? (
+            <>
+              <Link href="/">
+                <a className="hover:bg-gray-700 p-2 rounded duration-150">
+                  search
+                </a>
+              </Link>
+              <Link href="/new">
+                <a className="hover:bg-gray-700 p-2 rounded duration-150">
+                  create new post
+                </a>
+              </Link>
+              <Link href="#">
+                <a className="hover:bg-gray-700 p-2 rounded duration-150">
+                  logout
+                </a>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link href="/signup">
+                <a className="hover:bg-gray-700 p-2 rounded duration-150">
+                  Sign Up
+                </a>
+              </Link>
+              <Link href="/signin">
+                <a className="hover:bg-gray-700 p-2 rounded duration-150">
+                  Sign In
+                </a>
+              </Link>
+            </>
+          )}
         </div>
         <div
           className="cursor-pointer sm:hidden"

@@ -2,9 +2,9 @@ import React from "react";
 import Layout from "@/components/Layout";
 import Link from "next/link";
 
-export default function SignUp() {
+export default function SignIn() {
   return (
-    <Layout title="Sign Up">
+    <Layout title="Sign In">
       <Link href="/">
         <div className="absolute top-0 text-gray-600 hover:text-gray-900 right-0 mr-10 mt-5 flex items-center space-x-2 uppercase text-xs font-bold duration-150 cursor-pointer">
           <span className="inline-block">Back to search</span>
@@ -40,22 +40,19 @@ export default function SignUp() {
               className="form-input mb-3 w-full"
               placeholder="Password"
             />
-            <input
-              type="password"
-              name="password2"
-              className="form-input mb-3 w-full"
-              placeholder="Confirm Password"
-            />
             <button
               type="submit"
-              className="bg-gray-900 text-white py-3 rounded font-bold hover:bg-gray-800 duration-150 mb-3  w-full"
+              className="bg-gray-900 text-white py-3 rounded font-bold hover:bg-gray-800 duration-150 mb-3 w-full"
             >
-              Sign Up
+              Sign In
             </button>
             <div className="flex justify-between w-full text-sm">
               <span className="text-gray-600 hover:text-gray-900 duration-150 font-semibold inline-block">
-                <Link href="/signin">
-                  <a>Already have an account? Sign In</a>
+                Forgot password?
+              </span>
+              <span className="text-gray-600 hover:text-gray-900 duration-150 font-semibold inline-block">
+                <Link href="/signup">
+                  <a>No account? Sign Up</a>
                 </Link>
               </span>
             </div>
