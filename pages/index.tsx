@@ -84,6 +84,7 @@ const Index = () => (
           <option value="WARLOCK">WARLOCK</option>
           <option value="SHAMAN">SHAMAN</option>
           <option value="ROGUE">ROGUE</option>
+          <option value="PALADIN">PALADIN</option>
         </select>
         <select className="w-auto form-select">
           <option value="" disabled selected>
@@ -96,11 +97,14 @@ const Index = () => (
       </div>
       <div className="grid gap-x-10 gap-y-5 lg:gap-y-10 lg:grid-cols-2 xl:grid-cols-3">
         {posts.map((post) => (
-          <div key={post.id} className="">
+          <div
+            key={post.id}
+            className="w-full hover:bg-gray-200 p-3 rounded duration-150 cursor-pointer"
+          >
             <img
               src={post.image}
               alt="ElvUI player interface"
-              className="mb-3 w-auto rounded-md"
+              className="mb-3 w-full rounded-md"
             />
             <p className="text-xl md:text-2xl font-semibold mb-3">
               {post.title}

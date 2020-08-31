@@ -12,7 +12,7 @@ export default function New() {
             placeholder="Enter a description about your UI setup"
             className="form-textarea resize-none mb-3"
           />
-          <div className="space-y-3">
+          <div className="space-y-3 mb-3">
             <select className="w-full form-select">
               <option value="" disabled selected>
                 Select a class
@@ -28,6 +28,7 @@ export default function New() {
               <option value="WARLOCK">WARLOCK</option>
               <option value="SHAMAN">SHAMAN</option>
               <option value="ROGUE">ROGUE</option>
+              <option value="PALADIN">PALADIN</option>
             </select>
             <select className="w-full form-select">
               <option value="" disabled selected>
@@ -38,7 +39,15 @@ export default function New() {
               <option value="HEALER">HEALER</option>
             </select>
             <input type="file" className="form-input w-full" multiple />
+            <textarea
+              rows={10}
+              placeholder="ElvUI import string"
+              className="form-textarea resize-none mb-3 w-full"
+            />
           </div>
+          <button className="bg-gray-900 text-white w-1/3 py-3 rounded font-bold hover:bg-gray-800 duration-150">
+            Submit
+          </button>
         </form>
       </div>
     </Layout>
