@@ -1,18 +1,52 @@
 import React from "react";
 import Layout from "@/components/Layout";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { Auth } from "aws-amplify";
+import { useRouter } from "next/router";
+import { useSubmitting } from "../hooks/useSubmitting";
+import Cookies from "js-cookie";
 
 export default function SignUp() {
+  const { register, handleSubmit } = useForm();
+
+  const [error, setError] = React.useState(null);
+
+  const router = useRouter();
+
+  const { submitting, setSubmitting } = useSubmitting();
+
+  const onSubmit = async (data) => {
+    try {
+      const { username, password, email } = data;
+      console.log(data);
+
+      await Auth.signUp({
+        username,
+        password,
+        attributes: { email },
+      })
+        .then(() => setSubmitting(true))
+        .then(() => {
+          Cookies.set("confirm", "true", { sameSite: "strict" });
+        })
+        .then(() => router.push("/confirm"))
+        .then(() => setSubmitting(false));
+    } catch (e) {
+      setError(e);
+      setSubmitting(false);
+    }
+  };
   return (
     <Layout title="Sign Up">
       <Link href="/">
-        <div className="absolute top-0 text-gray-600 hover:text-gray-900 right-0 mr-10 mt-5 flex items-center space-x-2 uppercase text-xs font-bold duration-150 cursor-pointer">
+        <div className="absolute top-0 right-0 flex items-center mt-5 mr-10 space-x-2 text-xs font-bold text-gray-600 uppercase duration-150 cursor-pointer hover:text-gray-900">
           <span className="inline-block">Back to search</span>
           <span className="inline-block">
             <svg
               viewBox="0 0 20 20"
               fill="currentColor"
-              className="arrow-narrow-right w-6 h-6 inline"
+              className="inline w-6 h-6 arrow-narrow-right"
             >
               <path
                 fillRule="evenodd"
@@ -23,37 +57,65 @@ export default function SignUp() {
           </span>
         </div>
       </Link>
-      <div className="h-full flex p-5 md:p-0">
-        <div className="bg-gray-900 w-1/2 h-full hidden md:block"></div>
+      <div className="flex h-full p-5 md:p-0">
+        <div className="hidden w-1/2 h-full bg-gray-900 md:block"></div>
         <div className="w-full md:w-1/2">
-          <form className="h-full flex flex-col justify-center items-center max-w-sm mx-auto">
-            <h1 className="mb-3 font-bold text-gray-900 text-3xl">QuickUI</h1>
+          <form
+            className="relative flex flex-col items-center justify-center h-full max-w-sm mx-auto"
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            {error && (
+              <div className="absolute bottom-0 max-w-sm p-5 mb-20 text-red-800 bg-red-300 rounded">
+                <p>{error.message}</p>
+              </div>
+            )}
+            <h1 className="mb-3 text-3xl font-bold text-gray-900">QuickUI</h1>
             <input
               type="text"
               name="username"
-              className="form-input mb-2 w-full"
+              className="w-full mb-3 form-input"
               placeholder="Username"
+              required
+              ref={register}
+              autoComplete="off"
+            />
+            <input
+              type="email"
+              name="email"
+              className="w-full mb-3 form-input"
+              placeholder="E-mail"
+              required
+              ref={register}
+              autoComplete="off"
             />
             <input
               type="password"
               name="password"
-              className="form-input mb-3 w-full"
+              className="w-full mb-3 form-input"
               placeholder="Password"
+              required
+              ref={register}
+              autoComplete="off"
             />
             <input
               type="password"
               name="password2"
-              className="form-input mb-3 w-full"
+              className="w-full mb-3 form-input"
               placeholder="Confirm Password"
+              required
+              ref={register}
+              autoComplete="off"
             />
             <button
               type="submit"
-              className="bg-gray-900 text-white py-3 rounded font-bold hover:bg-gray-800 duration-150 mb-3  w-full"
+              className={`w-full py-3 mb-3 font-bold text-white duration-150 bg-gray-900 rounded hover:bg-gray-800 ${
+                submitting ? "disabled" : ""
+              }`}
             >
               Sign Up
             </button>
             <div className="flex justify-between w-full text-sm">
-              <span className="text-gray-600 hover:text-gray-900 duration-150 font-semibold inline-block">
+              <span className="inline-block font-semibold text-gray-600 duration-150 hover:text-gray-900">
                 <Link href="/signin">
                   <a>Already have an account? Sign In</a>
                 </Link>

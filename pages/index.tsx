@@ -67,8 +67,8 @@ const posts = [
 const Index = () => (
   <Layout title="Home">
     <Navbar />
-    <div className="flex flex-col mt-10 py-4 lg:py-0 px-2 lg:px-10">
-      <div className="flex space-x-3 mb-3 hidden">
+    <div className="flex flex-col px-2 py-4 mt-10 lg:py-0 lg:px-10">
+      <div className="flex hidden mb-3 space-x-3">
         <select className="w-auto form-select">
           <option value="" disabled selected>
             Filter by class
@@ -99,35 +99,37 @@ const Index = () => (
         {posts.map((post) => (
           <div
             key={post.id}
-            className="w-full hover:bg-gray-200 p-3 rounded duration-150 cursor-pointer"
+            className="w-full p-3 duration-150 rounded cursor-pointer hover:bg-gray-200"
           >
             <img
               src={post.image}
               alt="ElvUI player interface"
-              className="mb-3 w-full rounded-md"
+              className="w-full mb-3 rounded-md"
             />
-            <p className="text-xl md:text-2xl font-semibold mb-3">
+            <p className="mb-3 text-xl font-semibold md:text-2xl">
               {post.title}
             </p>
-            <div className="space-x-2 font-bold text-sm">
-              <span className="inline-block bg-blue-300 py-1 px-3 rounded text-blue-900 uppercase">
+            <div className="space-x-2 text-sm font-bold">
+              <span className="inline-block px-3 py-1 text-blue-900 uppercase bg-blue-300 rounded">
                 {post.class}
               </span>
-              {post.roles.map((role) =>
-                role === "DPS" ? (
-                  <span className="inline-block bg-red-300 text-red-900 py-1 px-3 rounded">
-                    {role}
-                  </span>
-                ) : role === "TANK" ? (
-                  <span className="inline-block bg-gray-300 text-gray-900 py-1 px-3 rounded">
-                    {role}
-                  </span>
-                ) : role === "HEALER" ? (
-                  <span className="inline-block bg-green-300 text-green-900 py-1 px-3 rounded">
-                    {role}
-                  </span>
-                ) : null
-              )}
+              {post.roles.map((role) => (
+                <span key={role}>
+                  {role === "DPS" ? (
+                    <span className="inline-block px-3 py-1 text-red-900 bg-red-300 rounded">
+                      {role}
+                    </span>
+                  ) : role === "TANK" ? (
+                    <span className="inline-block px-3 py-1 text-gray-900 bg-gray-300 rounded">
+                      {role}
+                    </span>
+                  ) : role === "HEALER" ? (
+                    <span className="inline-block px-3 py-1 text-green-900 bg-green-300 rounded">
+                      {role}
+                    </span>
+                  ) : null}
+                </span>
+              ))}
             </div>
           </div>
         ))}
