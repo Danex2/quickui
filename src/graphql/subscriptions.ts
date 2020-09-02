@@ -7,11 +7,11 @@ export const onCreateUi = /* GraphQL */ `
     onCreateUI {
       id
       title
-      class
-      role
+      characterClass
+      roles
       code
       description
-      createdOn
+      images
       createdAt
       updatedAt
     }
@@ -22,11 +22,11 @@ export const onUpdateUi = /* GraphQL */ `
     onUpdateUI {
       id
       title
-      class
-      role
+      characterClass
+      roles
       code
       description
-      createdOn
+      images
       createdAt
       updatedAt
     }
@@ -37,11 +37,11 @@ export const onDeleteUi = /* GraphQL */ `
     onDeleteUI {
       id
       title
-      class
-      role
+      characterClass
+      roles
       code
       description
-      createdOn
+      images
       createdAt
       updatedAt
     }

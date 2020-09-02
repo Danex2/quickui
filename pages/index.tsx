@@ -1,6 +1,5 @@
 import Layout from "../components/Layout";
 import Navbar from "@/components/Navbar";
-import { Auth } from "aws-amplify";
 
 const posts = [
   {
@@ -49,7 +48,7 @@ const posts = [
       "https://media.wago.io/screenshots/SJ39l2nif/5c12b8523f1bba608f2d980a.jpg",
     title: "My Mage UI",
     class: "Mage",
-    roles: ["DPS"],
+    roles: ["DPS", "TANK", "HEALER"],
     description:
       "This is my mage ui for shadowlands, copy the ui string and enjoy!",
   },

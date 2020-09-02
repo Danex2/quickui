@@ -7,11 +7,11 @@ export const createUi = /* GraphQL */ `
     createUI(input: $input, condition: $condition) {
       id
       title
-      class
-      role
+      characterClass
+      roles
       code
       description
-      createdOn
+      images
       createdAt
       updatedAt
     }
@@ -22,11 +22,11 @@ export const updateUi = /* GraphQL */ `
     updateUI(input: $input, condition: $condition) {
       id
       title
-      class
-      role
+      characterClass
+      roles
       code
       description
-      createdOn
+      images
       createdAt
       updatedAt
     }
@@ -37,11 +37,11 @@ export const deleteUi = /* GraphQL */ `
     deleteUI(input: $input, condition: $condition) {
       id
       title
-      class
-      role
+      characterClass
+      roles
       code
       description
-      createdOn
+      images
       createdAt
       updatedAt
     }

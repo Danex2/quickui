@@ -7,11 +7,11 @@ export const getUi = /* GraphQL */ `
     getUI(id: $id) {
       id
       title
-      class
-      role
+      characterClass
+      roles
       code
       description
-      createdOn
+      images
       createdAt
       updatedAt
     }
@@ -23,73 +23,11 @@ export const listUIs = /* GraphQL */ `
       items {
         id
         title
-        class
-        role
+        characterClass
+        roles
         code
         description
-        createdOn
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const uiByClassByRole = /* GraphQL */ `
-  query UiByClassByRole(
-    $class: String
-    $role: ModelStringKeyConditionInput
-    $sortDirection: ModelSortDirection
-    $filter: ModelUIFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    uiByClassByRole(
-      class: $class
-      role: $role
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        title
-        class
-        role
-        code
-        description
-        createdOn
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const uiByDate = /* GraphQL */ `
-  query UiByDate(
-    $createdOn: AWSDateTime
-    $sortDirection: ModelSortDirection
-    $filter: ModelUIFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    uiByDate(
-      createdOn: $createdOn
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        title
-        class
-        role
-        code
-        description
-        createdOn
+        images
         createdAt
         updatedAt
       }
