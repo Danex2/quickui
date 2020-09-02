@@ -4,16 +4,20 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { Auth } from "aws-amplify";
 import { useRouter } from "next/router";
+import { useUser } from "hooks/useUser";
 import { AuthContext } from "context/AuthContext";
 
 export default function SignIn() {
   const { register, handleSubmit } = useForm();
-
+  const { user } = useUser();
   const { setUser } = React.useContext(AuthContext);
+  const [error, setError] = React.useState(null);
 
   const router = useRouter();
 
-  const [error, setError] = React.useState(null);
+  if (user) {
+    router.push("/");
+  }
 
   const onSubmit = async (data) => {
     try {

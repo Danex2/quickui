@@ -1,9 +1,17 @@
 import Layout from "@/components/Layout";
 import Navbar from "@/components/Navbar";
 import { useForm } from "react-hook-form";
+import { useUser } from "@/hooks/useUser";
+import { useRouter } from "next/router";
 
 export default function New() {
   const { register, handleSubmit } = useForm();
+  const { user } = useUser();
+  const router = useRouter();
+
+  if (!user) {
+    router.push("/");
+  }
 
   const onSubmit = (data) => console.log(data);
 
@@ -49,8 +57,9 @@ export default function New() {
               ref={register}
               required
               name="role"
+              defaultValue={"DEFAULT"}
             >
-              <option value="" disabled selected>
+              <option value="DEFAULT" disabled>
                 Select a role
               </option>
               <option value="DPS">DPS</option>

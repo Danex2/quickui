@@ -2,12 +2,18 @@ import React from "react";
 import Layout from "@/components/Layout";
 import { useForm } from "react-hook-form";
 import { Auth } from "aws-amplify";
+import { useUser } from "hooks/useUser";
 import { useRouter } from "next/router";
 
-export default function Confirm() {
+export default function Resend() {
   const { register, handleSubmit } = useForm();
+  const { user } = useUser();
   const [error, setError] = React.useState(null);
   const router = useRouter();
+
+  if (user) {
+    router.push("/");
+  }
 
   const onSubmit = async (data) => {
     try {
@@ -19,7 +25,7 @@ export default function Confirm() {
     }
   };
   return (
-    <Layout title="Sign Up">
+    <Layout title="Code resend">
       <div className="flex h-full p-5 md:p-0">
         <div className="hidden w-1/2 h-full bg-gray-900 lg:block"></div>
         <div className="w-full lg:w-1/2">

@@ -4,15 +4,20 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { Auth } from "aws-amplify";
 import { useRouter } from "next/router";
+import { useUser } from "hooks/useUser";
 import { useSubmitting } from "../hooks/useSubmitting";
 import Cookies from "js-cookie";
 
 export default function SignUp() {
   const { register, handleSubmit } = useForm();
-
+  const { user } = useUser();
   const [error, setError] = React.useState(null);
 
   const router = useRouter();
+
+  if (user) {
+    router.push("/");
+  }
 
   const { submitting, setSubmitting } = useSubmitting();
 
