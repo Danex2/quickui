@@ -5,6 +5,7 @@ import awsconfig from "../src/aws-exports";
 import Amplify from "aws-amplify";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import AuthProvider from "context/AuthContext";
 
 Amplify.configure(awsconfig);
 
@@ -18,7 +19,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
-  return <Component {...pageProps} />;
+  return (
+    <AuthProvider>
+      <Component {...pageProps} />
+    </AuthProvider>
+  );
 }
 
 export default MyApp;

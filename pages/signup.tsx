@@ -19,7 +19,6 @@ export default function SignUp() {
   const onSubmit = async (data) => {
     try {
       const { username, password, email } = data;
-      console.log(data);
 
       await Auth.signUp({
         username,

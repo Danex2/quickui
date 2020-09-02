@@ -2,14 +2,28 @@ import React from "react";
 import Layout from "@/components/Layout";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { Auth } from "aws-amplify";
+import { useRouter } from "next/router";
+import { AuthContext } from "context/AuthContext";
 
 export default function SignIn() {
   const { register, handleSubmit } = useForm();
 
+  const { setUser } = React.useContext(AuthContext);
+
+  const router = useRouter();
+
   const [error, setError] = React.useState(null);
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      const { username, password } = data;
+      await Auth.signIn(username, password);
+      setUser(true);
+      router.push("/");
+    } catch (e) {
+      setError(e);
+    }
   };
 
   return (

@@ -10,18 +10,25 @@ export default function New() {
   return (
     <Layout title="Create a new UI Post">
       <Navbar />
-      <div className="mt-20 max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto mt-20">
         <form className="flex flex-col p-3" onSubmit={handleSubmit(onSubmit)}>
           <textarea
             rows={10}
             placeholder="Enter a description about your UI setup"
-            className="form-textarea resize-none mb-3"
+            className="mb-3 resize-none form-textarea"
             ref={register}
             required
+            name="description"
           />
-          <div className="space-y-3 mb-3">
-            <select className="w-full form-select" ref={register} required>
-              <option value="" disabled selected>
+          <div className="mb-3 space-y-3">
+            <select
+              className="w-full form-select"
+              ref={register}
+              required
+              name="class"
+              defaultValue={"DEFAULT"}
+            >
+              <option value="DEFAULT" disabled>
                 Select a class
               </option>
               <option value="MAGE">MAGE</option>
@@ -37,7 +44,12 @@ export default function New() {
               <option value="ROGUE">ROGUE</option>
               <option value="PALADIN">PALADIN</option>
             </select>
-            <select className="w-full form-select" ref={register} required>
+            <select
+              className="w-full form-select"
+              ref={register}
+              required
+              name="role"
+            >
               <option value="" disabled selected>
                 Select a role
               </option>
@@ -45,16 +57,22 @@ export default function New() {
               <option value="TANK">TANK</option>
               <option value="HEALER">HEALER</option>
             </select>
-            <input type="file" className="form-input w-full" multiple />
+            <input
+              type="file"
+              className="w-full form-input"
+              multiple
+              name="images"
+            />
             <textarea
               rows={10}
               placeholder="ElvUI import string"
-              className="form-textarea resize-none mb-3 w-full"
+              className="w-full mb-3 resize-none form-textarea"
               ref={register}
               required
+              name="code"
             />
           </div>
-          <button className="bg-gray-900 text-white w-1/3 py-3 rounded font-bold hover:bg-gray-800 duration-150">
+          <button className="w-1/3 py-3 font-bold text-white duration-150 bg-gray-900 rounded hover:bg-gray-800">
             Submit
           </button>
         </form>

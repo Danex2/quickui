@@ -1,43 +1,49 @@
 import React from "react";
 import Link from "next/link";
-
-const loggedIn = false;
+import { AuthContext } from "context/AuthContext";
+import { Auth } from "aws-amplify";
 
 export default function Navbar() {
   const [open, setOpen] = React.useState(false);
 
+  const { user } = React.useContext(AuthContext);
+
   return (
     <>
-      <nav className="bg-gray-900 text-white flex justify-between px-10 py-5 items-center">
+      <nav className="flex items-center justify-between px-10 py-5 text-white bg-gray-900">
         <h1 className="text-3xl font-bold">QuickUI</h1>
-        <div className="space-x-4 uppercase text-sm font-bold hidden sm:block">
-          {loggedIn ? (
+        <div className="hidden space-x-4 text-sm font-bold uppercase sm:block">
+          {user ? (
             <>
               <Link href="/">
-                <a className="hover:bg-gray-700 p-2 rounded duration-150">
+                <a className="p-2 duration-150 rounded hover:bg-gray-700">
                   search
                 </a>
               </Link>
               <Link href="/new">
-                <a className="hover:bg-gray-700 p-2 rounded duration-150">
+                <a className="p-2 duration-150 rounded hover:bg-gray-700">
                   create new post
                 </a>
               </Link>
-              <Link href="#">
-                <a className="hover:bg-gray-700 p-2 rounded duration-150">
-                  logout
-                </a>
-              </Link>
+
+              <a
+                className="p-2 duration-150 rounded cursor-pointer hover:bg-gray-700"
+                onClick={async () => {
+                  await Auth.signOut();
+                }}
+              >
+                logout
+              </a>
             </>
           ) : (
             <>
               <Link href="/signup">
-                <a className="hover:bg-gray-700 p-2 rounded duration-150">
+                <a className="p-2 duration-150 rounded hover:bg-gray-700">
                   Sign Up
                 </a>
               </Link>
               <Link href="/signin">
-                <a className="hover:bg-gray-700 p-2 rounded duration-150">
+                <a className="p-2 duration-150 rounded hover:bg-gray-700">
                   Sign In
                 </a>
               </Link>
@@ -48,7 +54,7 @@ export default function Navbar() {
           className="cursor-pointer sm:hidden"
           onClick={() => setOpen(!open)}
         >
-          <svg viewBox="0 0 20 20" fill="currentColor" className="menu w-8 h-8">
+          <svg viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 menu">
             <path
               fillRule="evenodd"
               d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
@@ -63,20 +69,18 @@ export default function Navbar() {
         }`}
       >
         <Link href="/">
-          <a className="hover:bg-gray-700 p-2 rounded duration-150 block">
+          <a className="block p-2 duration-150 rounded hover:bg-gray-700">
             search
           </a>
         </Link>
         <Link href="/new">
-          <a className="hover:bg-gray-700 p-2 rounded duration-150 block">
+          <a className="block p-2 duration-150 rounded hover:bg-gray-700">
             create new post
           </a>
         </Link>
-        <Link href="#">
-          <a className="hover:bg-gray-700 p-2 rounded duration-150 block">
-            logout
-          </a>
-        </Link>
+        <a className="block p-2 duration-150 rounded hover:bg-gray-700">
+          logout
+        </a>
       </div>
     </>
   );
