@@ -51,7 +51,9 @@ export default function SignIn() {
         </div>
       </Link>
       <div className="flex h-full p-5 md:p-0">
-        <div className="hidden w-1/2 h-full bg-gray-900 md:block"></div>
+        <div className="hidden w-1/2 h-full bg-gray-900 md:block">
+          <img src="/login.jpg" alt="" className="object-cover h-full" />
+        </div>
         <div className="w-full md:w-1/2">
           <form
             className="relative flex flex-col items-center justify-center h-full max-w-sm mx-auto"
