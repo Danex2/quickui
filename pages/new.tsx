@@ -17,6 +17,8 @@ const {
 export default function New() {
   const { register, handleSubmit } = useForm();
 
+  const [error, setError] = React.useState(null);
+
   const router = useRouter();
 
   const { submitting, setSubmitting } = useSubmitting();
@@ -24,39 +26,42 @@ export default function New() {
   const onSubmit = async (data) => {
     const { characterClass, code, description, images, roles, title } = data;
     try {
-      setSubmitting(!submitting);
-      const imagestoS3 = Array.from(images).map(async (image) => {
-        const { type: mimeType } = image;
-        const key = `images/${uuid()}${image.name}`;
-        const url = `https://${bucket}.s3.${region}.amazonaws.com/public/${key}`;
+      if (images.length > 3) {
+        throw new Error("You can only a maximum of 3 images");
+      } else {
+        setSubmitting(!submitting);
+        const imagestoS3 = Array.from(images).map(async (image) => {
+          const { type: mimeType } = image;
+          const key = `images/${uuid()}${image.name}`;
+          const url = `https://${bucket}.s3.${region}.amazonaws.com/public/${key}`;
 
-        await Storage.put(key, image, {
-          contentType: mimeType,
+          await Storage.put(key, image, {
+            contentType: mimeType,
+          });
+
+          return url;
         });
-
-        return url;
-      });
-
-      Promise.all(imagestoS3)
-        .then(
-          async (uploadedImages) =>
-            await API.graphql(
-              graphqlOperation(CreateUI, {
-                input: {
-                  title,
-                  characterClass,
-                  roles,
-                  code,
-                  description,
-                  images: uploadedImages,
-                },
-              })
-            )
-        )
-        .then(() => setSubmitting(false))
-        .then(() => router.push("/"));
+        Promise.all(imagestoS3)
+          .then(
+            async (uploadedImages) =>
+              await API.graphql(
+                graphqlOperation(CreateUI, {
+                  input: {
+                    title,
+                    characterClass,
+                    roles,
+                    code,
+                    description,
+                    images: uploadedImages,
+                  },
+                })
+              )
+          )
+          .then(() => setSubmitting(false))
+          .then(() => router.push("/"));
+      }
     } catch (e) {
-      console.error(e);
+      setError(e);
     }
   };
 
@@ -65,6 +70,11 @@ export default function New() {
       <Navbar />
       <div className="max-w-6xl mx-auto mt-20">
         <form className="flex flex-col p-3" onSubmit={handleSubmit(onSubmit)}>
+          {error && (
+            <div className="absolute bottom-0 max-w-sm p-5 mb-20 text-red-800 bg-red-300 rounded">
+              <p>{error.message}</p>
+            </div>
+          )}
           <input
             type="text"
             className="w-full mb-3 form-input"

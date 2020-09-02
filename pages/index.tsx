@@ -2,70 +2,8 @@ import Layout from "../components/Layout";
 import Navbar from "@/components/Navbar";
 import React from "react";
 import { API, graphqlOperation } from "aws-amplify";
-import { listUIs as ListUIs, listUIs } from "src/graphql/queries";
-
-const posts = [
-  {
-    id: 1,
-    image:
-      "https://media.wago.io/screenshots/SJ39l2nif/5c12b8523f1bba608f2d980a.jpg",
-    title: "My Mage UI",
-    class: "Mage",
-    roles: ["DPS"],
-    description:
-      "This is my mage ui for shadowlands, copy the ui string and enjoy!",
-  },
-  {
-    id: 2,
-    image:
-      "https://media.wago.io/screenshots/SJ39l2nif/5c12b8523f1bba608f2d980a.jpg",
-    title: "My Mage UI",
-    class: "Mage",
-    roles: ["DPS"],
-    description:
-      "This is my mage ui for shadowlands, copy the ui string and enjoy!",
-  },
-  {
-    id: 3,
-    image:
-      "https://media.wago.io/screenshots/SJ39l2nif/5c12b8523f1bba608f2d980a.jpg",
-    title: "My Mage UI",
-    class: "Mage",
-    roles: ["HEALER"],
-    description:
-      "This is my mage ui for shadowlands, copy the ui string and enjoy!",
-  },
-  {
-    id: 4,
-    image:
-      "https://media.wago.io/screenshots/SJ39l2nif/5c12b8523f1bba608f2d980a.jpg",
-    title: "My Mage UI",
-    class: "Mage",
-    roles: ["DPS"],
-    description:
-      "This is my mage ui for shadowlands, copy the ui string and enjoy!",
-  },
-  {
-    id: 5,
-    image:
-      "https://media.wago.io/screenshots/SJ39l2nif/5c12b8523f1bba608f2d980a.jpg",
-    title: "My Mage UI",
-    class: "Mage",
-    roles: ["DPS", "TANK", "HEALER"],
-    description:
-      "This is my mage ui for shadowlands, copy the ui string and enjoy!",
-  },
-  {
-    id: 6,
-    image:
-      "https://media.wago.io/screenshots/SJ39l2nif/5c12b8523f1bba608f2d980a.jpg",
-    title: "My Mage UI",
-    class: "Mage",
-    roles: ["TANK"],
-    description:
-      "This is my mage ui for shadowlands, copy the ui string and enjoy!",
-  },
-];
+import { listUIs as ListUIs } from "src/graphql/queries";
+import ClassTag from "components/ClassTag";
 
 const Index = () => {
   const [data, setData] = React.useState([]);
@@ -126,9 +64,10 @@ const Index = () => {
                   {post.title}
                 </p>
                 <div className="space-x-2 text-sm font-bold">
-                  <span className="inline-block px-3 py-1 text-blue-900 uppercase bg-blue-300 rounded">
+                  {/* <span className="inline-block px-3 py-1 text-blue-900 uppercase bg-blue-300 rounded">
                     {post.characterClass}
-                  </span>
+                  </span> */}
+                  <ClassTag characterClass={post.characterClass} />
                   {post.roles.map((role) => (
                     <span key={role}>
                       {role === "DPS" ? (
