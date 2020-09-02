@@ -1,5 +1,8 @@
 import Layout from "../components/Layout";
 import Navbar from "@/components/Navbar";
+import React from "react";
+import { API, graphqlOperation } from "aws-amplify";
+import { listUIs as ListUIs, listUIs } from "src/graphql/queries";
 
 const posts = [
   {
@@ -65,6 +68,17 @@ const posts = [
 ];
 
 const Index = () => {
+  const [data, setData] = React.useState([]);
+
+  React.useEffect(() => {
+    getUIList();
+  }, []);
+
+  async function getUIList() {
+    const uiData = await API.graphql(graphqlOperation(ListUIs));
+    setData(uiData.data.listUIs.items);
+  }
+
   return (
     <Layout title="Home">
       <Navbar />
@@ -97,40 +111,42 @@ const Index = () => {
           </select>
         </div>
         <div className="grid gap-x-10 gap-y-5 lg:gap-y-10 lg:grid-cols-2 xl:grid-cols-3">
-          {posts.map((post) => (
+          {data.map((post) => (
             <div
               key={post.id}
-              className="w-full p-3 duration-150 rounded cursor-pointer hover:bg-gray-200"
+              className="flex flex-col w-full p-3 duration-150 rounded cursor-pointer hover:bg-gray-200"
             >
               <img
-                src={post.image}
+                src={post.images[0]}
                 alt="ElvUI player interface"
-                className="w-full mb-3 rounded-md"
+                className="object-fill w-full h-full mb-3 rounded-md"
               />
-              <p className="mb-3 text-xl font-semibold md:text-2xl">
-                {post.title}
-              </p>
-              <div className="space-x-2 text-sm font-bold">
-                <span className="inline-block px-3 py-1 text-blue-900 uppercase bg-blue-300 rounded">
-                  {post.class}
-                </span>
-                {post.roles.map((role) => (
-                  <span key={role}>
-                    {role === "DPS" ? (
-                      <span className="inline-block px-3 py-1 text-red-900 bg-red-300 rounded">
-                        {role}
-                      </span>
-                    ) : role === "TANK" ? (
-                      <span className="inline-block px-3 py-1 text-gray-900 bg-gray-300 rounded">
-                        {role}
-                      </span>
-                    ) : role === "HEALER" ? (
-                      <span className="inline-block px-3 py-1 text-green-900 bg-green-300 rounded">
-                        {role}
-                      </span>
-                    ) : null}
+              <div className="mt-auto">
+                <p className="mb-3 text-xl font-semibold md:text-2xl">
+                  {post.title}
+                </p>
+                <div className="space-x-2 text-sm font-bold">
+                  <span className="inline-block px-3 py-1 text-blue-900 uppercase bg-blue-300 rounded">
+                    {post.characterClass}
                   </span>
-                ))}
+                  {post.roles.map((role) => (
+                    <span key={role}>
+                      {role === "DPS" ? (
+                        <span className="inline-block px-3 py-1 text-red-900 bg-red-300 rounded">
+                          {role}
+                        </span>
+                      ) : role === "TANK" ? (
+                        <span className="inline-block px-3 py-1 text-gray-900 bg-gray-300 rounded">
+                          {role}
+                        </span>
+                      ) : role === "HEALER" ? (
+                        <span className="inline-block px-3 py-1 text-green-900 bg-green-300 rounded">
+                          {role}
+                        </span>
+                      ) : null}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}

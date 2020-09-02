@@ -16,7 +16,6 @@ const {
 
 export default function New() {
   const { register, handleSubmit } = useForm();
-  const [imageUrls, setImageUrls] = React.useState([]);
 
   const router = useRouter();
 
@@ -130,6 +129,7 @@ export default function New() {
               multiple
               name="images"
               ref={register}
+              accept="image/*"
             />
             <textarea
               rows={10}
@@ -141,9 +141,8 @@ export default function New() {
             />
           </div>
           <button
-            className={`w-1/3 py-3 font-bold text-white duration-150 bg-gray-900 rounded hover:bg-gray-800 ${
-              submitting ? "cursor-not-allowed bg-gray-800" : ""
-            }`}
+            disabled={submitting ? true : false}
+            className="w-1/3 py-3 font-bold text-white duration-150 bg-gray-900 rounded hover:bg-gray-800"
           >
             Submit
           </button>
