@@ -1,6 +1,11 @@
 type UI
 @model
-@auth(rules: [{ allow: owner, operations: [create, delete, update] }]) {
+@auth(
+  rules: [
+    { allow: owner, operations: [create, delete, update] }
+    { allow: private, operations: [read] }
+  ]
+) {
   id: ID!
   title: String!
   characterClass: String!

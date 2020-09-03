@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 
 export default function Confirm() {
   const { register, handleSubmit } = useForm();
-  const [error, setError] = React.useState(null);
+  const [error, setError] = React.useState<{ message: string } | null>(null);
   const router = useRouter();
 
   const onSubmit = async (data) => {

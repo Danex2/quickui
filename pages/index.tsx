@@ -3,7 +3,8 @@ import Navbar from "@/components/Navbar";
 import React from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import { listUIs as ListUIs } from "src/graphql/queries";
-import ClassTag from "components/ClassTag";
+import Protected from "components/Protected";
+import UICard from "@/components/UICard";
 
 const Index = () => {
   const [data, setData] = React.useState([]);
@@ -50,44 +51,13 @@ const Index = () => {
         </div>
         <div className="grid gap-x-10 gap-y-5 lg:gap-y-10 lg:grid-cols-2 xl:grid-cols-3">
           {data.map((post) => (
-            <div
-              key={post.id}
-              className="flex flex-col w-full p-3 duration-150 rounded cursor-pointer hover:bg-gray-200"
-            >
-              <img
-                src={post.images[0]}
-                alt="ElvUI player interface"
-                className="object-fill w-full h-full mb-3 rounded-md"
-              />
-              <div className="mt-auto">
-                <p className="mb-3 text-xl font-semibold md:text-2xl">
-                  {post.title}
-                </p>
-                <div className="space-x-2 text-sm font-bold">
-                  {/* <span className="inline-block px-3 py-1 text-blue-900 uppercase bg-blue-300 rounded">
-                    {post.characterClass}
-                  </span> */}
-                  <ClassTag characterClass={post.characterClass} />
-                  {post.roles.map((role) => (
-                    <span key={role}>
-                      {role === "DPS" ? (
-                        <span className="inline-block px-3 py-1 text-red-900 bg-red-300 rounded">
-                          {role}
-                        </span>
-                      ) : role === "TANK" ? (
-                        <span className="inline-block px-3 py-1 text-gray-900 bg-gray-300 rounded">
-                          {role}
-                        </span>
-                      ) : role === "HEALER" ? (
-                        <span className="inline-block px-3 py-1 text-green-900 bg-green-300 rounded">
-                          {role}
-                        </span>
-                      ) : null}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
+            <UICard
+              title={post.title}
+              id={post.id}
+              characterClass={post.characterClass}
+              roles={post.roles}
+              image={post.images[0]}
+            />
           ))}
         </div>
       </div>
@@ -95,4 +65,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Protected(Index);

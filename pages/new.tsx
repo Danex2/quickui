@@ -8,13 +8,14 @@ import { Storage, API, graphqlOperation } from "aws-amplify";
 import { useRouter } from "next/router";
 import config from "src/aws-exports";
 import { useSubmitting } from "hooks/useSubmitting";
+import Protected from "components/Protected";
 
 const {
   aws_user_files_s3_bucket_region: region,
   aws_user_files_s3_bucket: bucket,
 } = config;
 
-export default function New() {
+function New() {
   const { register, handleSubmit } = useForm();
 
   const [error, setError] = React.useState(null);
@@ -82,6 +83,7 @@ export default function New() {
             ref={register}
             placeholder="Enter a title for your post"
             required
+            maxLength={100}
           />
           <textarea
             rows={10}
@@ -90,6 +92,7 @@ export default function New() {
             ref={register}
             required
             name="description"
+            maxLength={300}
           />
           <div className="mb-3 space-y-3">
             <select
@@ -161,3 +164,4 @@ export default function New() {
     </Layout>
   );
 }
+export default Protected(New);
