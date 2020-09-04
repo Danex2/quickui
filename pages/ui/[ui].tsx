@@ -6,8 +6,9 @@ import { API, graphqlOperation } from "aws-amplify";
 import { useRouter } from "next/router";
 import ClassTag from "components/ClassTag";
 import { SRLWrapper } from "simple-react-lightbox";
+import Protected from "components/Protected";
 
-export default function UI() {
+function UI() {
   const router = useRouter();
 
   const [data, setData] = React.useState<{
@@ -117,3 +118,5 @@ export default function UI() {
     </Layout>
   );
 }
+
+export default Protected(UI);
