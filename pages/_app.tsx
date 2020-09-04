@@ -6,6 +6,7 @@ import Amplify from "aws-amplify";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import AuthProvider from "context/AuthContext";
+import SimpleReactLightbox from "simple-react-lightbox";
 
 Amplify.configure(awsconfig);
 
@@ -21,7 +22,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <AuthProvider>
-      <Component {...pageProps} />
+      <SimpleReactLightbox>
+        <Component {...pageProps} />
+      </SimpleReactLightbox>
     </AuthProvider>
   );
 }

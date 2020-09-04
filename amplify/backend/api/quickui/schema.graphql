@@ -2,7 +2,7 @@ type UI
 @model
 @auth(
   rules: [
-    { allow: owner, operations: [create, delete, update] }
+    { allow: owner, ownerField: "owner", operations: [create, delete, update] }
     { allow: private, operations: [read] }
   ]
 ) {
@@ -13,6 +13,7 @@ type UI
   code: String!
   description: String!
   images: [String]
+  owner: String
 }
 
 enum Role {

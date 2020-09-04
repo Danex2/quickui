@@ -12,6 +12,7 @@ export const onCreateUi = /* GraphQL */ `
       code
       description
       images
+      owner
       createdAt
       updatedAt
     }
@@ -27,6 +28,7 @@ export const onUpdateUi = /* GraphQL */ `
       code
       description
       images
+      owner
       createdAt
       updatedAt
     }
@@ -42,6 +44,7 @@ export const onDeleteUi = /* GraphQL */ `
       code
       description
       images
+      owner
       createdAt
       updatedAt
     }

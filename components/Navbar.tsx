@@ -78,7 +78,12 @@ export default function Navbar() {
             create new post
           </a>
         </Link>
-        <a className="block p-2 duration-150 rounded hover:bg-gray-700">
+        <a
+          className="block p-2 duration-150 rounded hover:bg-gray-700"
+          onClick={async () => {
+            await Auth.signOut();
+          }}
+        >
           logout
         </a>
       </div>

@@ -10,6 +10,7 @@ export type CreateUIInput = {
   code: string,
   description: string,
   images?: Array< string | null > | null,
+  owner?: string | null,
 };
 
 export enum Role {
@@ -86,6 +87,7 @@ export type UpdateUIInput = {
   code?: string | null,
   description?: string | null,
   images?: Array< string | null > | null,
+  owner?: string | null,
 };
 
 export type DeleteUIInput = {
@@ -100,6 +102,7 @@ export type ModelUIFilterInput = {
   code?: ModelStringInput | null,
   description?: ModelStringInput | null,
   images?: ModelStringInput | null,
+  owner?: ModelStringInput | null,
   and?: Array< ModelUIFilterInput | null > | null,
   or?: Array< ModelUIFilterInput | null > | null,
   not?: ModelUIFilterInput | null,
@@ -136,6 +139,7 @@ export type CreateUiMutation = {
     code: string,
     description: string,
     images: Array< string | null > | null,
+    owner: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -156,6 +160,7 @@ export type UpdateUiMutation = {
     code: string,
     description: string,
     images: Array< string | null > | null,
+    owner: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -176,6 +181,7 @@ export type DeleteUiMutation = {
     code: string,
     description: string,
     images: Array< string | null > | null,
+    owner: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -195,6 +201,7 @@ export type GetUiQuery = {
     code: string,
     description: string,
     images: Array< string | null > | null,
+    owner: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -218,6 +225,7 @@ export type ListUIsQuery = {
       code: string,
       description: string,
       images: Array< string | null > | null,
+      owner: string | null,
       createdAt: string,
       updatedAt: string,
     } | null > | null,
@@ -235,6 +243,7 @@ export type OnCreateUiSubscription = {
     code: string,
     description: string,
     images: Array< string | null > | null,
+    owner: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -250,6 +259,7 @@ export type OnUpdateUiSubscription = {
     code: string,
     description: string,
     images: Array< string | null > | null,
+    owner: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -265,6 +275,7 @@ export type OnDeleteUiSubscription = {
     code: string,
     description: string,
     images: Array< string | null > | null,
+    owner: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,

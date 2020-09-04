@@ -12,6 +12,7 @@ export const getUi = /* GraphQL */ `
       code
       description
       images
+      owner
       createdAt
       updatedAt
     }
@@ -28,6 +29,7 @@ export const listUIs = /* GraphQL */ `
         code
         description
         images
+        owner
         createdAt
         updatedAt
       }
