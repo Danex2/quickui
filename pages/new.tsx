@@ -76,18 +76,20 @@ function New() {
               <p>{error.message}</p>
             </div>
           )}
+          <label htmlFor="title">Enter a title for post</label>
           <input
             type="text"
             className="w-full mb-3 form-input"
             name="title"
             ref={register}
-            placeholder="Enter a title for your post"
+            placeholder="Mage ElvUI layout"
             required
             maxLength={100}
           />
+          <label htmlFor="description">Description</label>
           <textarea
             rows={10}
-            placeholder="Enter a description about your UI setup"
+            placeholder="Addons: recount, bigwigs, _cursor"
             className="mb-3 resize-none form-textarea"
             ref={register}
             required
@@ -118,6 +120,9 @@ function New() {
               <option value="ROGUE">ROGUE</option>
               <option value="PALADIN">PALADIN</option>
             </select>
+            <label htmlFor="roles" className="block">
+              Select roles
+            </label>
             <span className="inline-block mt-3 text-sm text-gray-600">
               <kbd>Ctrl</kbd> + click to select multiple roles
             </span>
@@ -136,6 +141,9 @@ function New() {
               <option value="TANK">TANK</option>
               <option value="HEALER">HEALER</option>
             </select>
+            <label htmlFor="images" className="block">
+              Select images (up to 3)
+            </label>
             <input
               type="file"
               className="w-full form-input"
@@ -144,9 +152,11 @@ function New() {
               ref={register}
               accept="image/*"
             />
+            <label htmlFor="code" className="block">
+              ElvUI import string
+            </label>
             <textarea
               rows={10}
-              placeholder="ElvUI import string"
               className="w-full mb-3 resize-none form-textarea"
               ref={register}
               required
