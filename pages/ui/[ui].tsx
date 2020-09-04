@@ -57,8 +57,8 @@ export default function UI() {
                     src={image}
                     alt={data.title}
                     className="object-fill w-full mb-3 rounded-md"
-                    height="485"
-                    width="776"
+                    height="635"
+                    width="1128"
                   />
                 ))}
               </SRLWrapper>
