@@ -31,17 +31,19 @@ function New() {
         throw new Error("You can only a maximum of 3 images");
       } else {
         setSubmitting(!submitting);
-        const imagestoS3 = Array.from(images).map(async (image) => {
-          const { type: mimeType } = image;
-          const key = `images/${uuid()}${image.name}`;
-          const url = `https://${bucket}.s3.${region}.amazonaws.com/public/${key}`;
+        const imagestoS3 = Array.from(images).map(
+          async (image: { type: { mimeType: string }; name: string }) => {
+            const { type: mimeType } = image;
+            const key = `images/${uuid()}${image.name}`;
+            const url = `https://${bucket}.s3.${region}.amazonaws.com/public/${key}`;
 
-          await Storage.put(key, image, {
-            contentType: mimeType,
-          });
+            await Storage.put(key, image, {
+              contentType: mimeType,
+            });
 
-          return url;
-        });
+            return url;
+          }
+        );
         Promise.all(imagestoS3)
           .then(
             async (uploadedImages) =>
@@ -76,7 +78,7 @@ function New() {
               <p>{error.message}</p>
             </div>
           )}
-          <label htmlFor="title">Enter a title for post</label>
+          <label htmlFor="title">Enter a title for your post</label>
           <input
             type="text"
             className="w-full mb-3 form-input"

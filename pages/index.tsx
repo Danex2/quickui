@@ -14,15 +14,15 @@ const Index = () => {
   }, []);
 
   async function getUIList() {
-    const uiData = await API.graphql(graphqlOperation(ListUIs));
-    setData(uiData.data.listUIs.items);
+    const uiData: any = await API.graphql(graphqlOperation(ListUIs));
+    setData(uiData.data?.listUIs.items);
   }
 
   return (
     <Layout title="Home">
       <Navbar />
       <div className="flex flex-col px-2 py-4 mt-10 lg:py-0 lg:px-10">
-        <div className="flex hidden mb-3 space-x-3">
+        <div className="flex px-3 mb-3 space-x-3">
           <select className="w-auto form-select" defaultValue={"DEFAULT"}>
             <option value="DEFAULT" disabled>
               Filter by class

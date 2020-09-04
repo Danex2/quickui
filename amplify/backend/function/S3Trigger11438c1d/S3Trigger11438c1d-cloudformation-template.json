@@ -59,7 +59,7 @@
 				"Runtime": "nodejs10.x",
 				"Timeout": "25",
 				"Code": {
-					"S3Bucket": "amplify-quickui-dev-15347-deployment",
+					"S3Bucket": "amplify-quickui-prod-02558-deployment",
 					"S3Key": "amplify-builds/S3Trigger11438c1d-48542b424c61335a6671-build.zip"
 				}
 			}

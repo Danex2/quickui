@@ -32,7 +32,7 @@ export default function UI() {
 
   async function getUIData() {
     try {
-      const uiData = await API.graphql(
+      const uiData: any = await API.graphql(
         graphqlOperation(GetUI, { id: router.query?.ui })
       );
 
@@ -49,10 +49,7 @@ export default function UI() {
       <Navbar />
       <div className="flex justify-center p-3 mt-20">
         {data && (
-          <div
-            key={data?.id}
-            className="flex flex-col w-full p-3 duration-150 rounded lg:w-1/2"
-          >
+          <div key={data?.id} className="max-w-6xl p-3 duration-150 rounded">
             <div>
               <SRLWrapper>
                 {data.images.map((image) => (
@@ -65,6 +62,9 @@ export default function UI() {
                   />
                 ))}
               </SRLWrapper>
+              <small className="text-gray-600">
+                Click image to view larger version
+              </small>
             </div>
             <div className="mt-auto">
               <p className="mb-3 text-xl font-semibold md:text-2xl">
@@ -107,6 +107,9 @@ export default function UI() {
                   {copied ? "copied to clipboard!" : "copy elvui import string"}
                 </span>
               </div>
+            </div>
+            <div className="px-3 py-1 mt-3 text-sm font-bold bg-gray-300 rounded">
+              <p className="text-gray-800">{data?.description}</p>
             </div>
           </div>
         )}

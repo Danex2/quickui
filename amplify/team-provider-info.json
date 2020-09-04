@@ -16,5 +16,26 @@
                 "quickui759544c5": {}
             }
         }
+    },
+    "prod": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-quickui-prod-02558-authRole",
+            "UnauthRoleArn": "arn:aws:iam::463447725099:role/amplify-quickui-prod-02558-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::463447725099:role/amplify-quickui-prod-02558-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-quickui-prod-02558-deployment",
+            "UnauthRoleName": "amplify-quickui-prod-02558-unauthRole",
+            "StackName": "amplify-quickui-prod-02558",
+            "StackId": "arn:aws:cloudformation:us-east-1:463447725099:stack/amplify-quickui-prod-02558/bbfb87c0-ee66-11ea-aeb4-0e1aa735f904",
+            "AmplifyAppId": "d3vtz7bmt2l79k"
+        },
+        "categories": {
+            "auth": {
+                "quickui759544c5": {}
+            },
+            "function": {
+                "S3Trigger11438c1d": {}
+            }
+        }
     }
 }
