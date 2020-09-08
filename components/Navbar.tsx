@@ -2,11 +2,14 @@ import React from "react";
 import Link from "next/link";
 import { AuthContext } from "context/AuthContext";
 import { Auth } from "aws-amplify";
+import { useRouter } from "next/router";
 
 export default function Navbar() {
   const [open, setOpen] = React.useState(false);
 
   const { user } = React.useContext(AuthContext);
+
+  const router = useRouter();
 
   return (
     <>
@@ -28,8 +31,8 @@ export default function Navbar() {
 
               <a
                 className="p-2 duration-150 rounded cursor-pointer hover:bg-gray-700"
-                onClick={async () => {
-                  await Auth.signOut();
+                onClick={() => {
+                  Auth.signOut().then(() => router.push("/signin"));
                 }}
               >
                 logout
@@ -80,8 +83,8 @@ export default function Navbar() {
         </Link>
         <a
           className="block p-2 duration-150 rounded hover:bg-gray-700"
-          onClick={async () => {
-            await Auth.signOut();
+          onClick={() => {
+            Auth.signOut().then(() => router.push("/signin"));
           }}
         >
           logout

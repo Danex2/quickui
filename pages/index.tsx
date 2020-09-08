@@ -49,7 +49,7 @@ const Index = () => {
             <option value="HEALER">HEALER</option>
           </select>
         </div>
-        <div className="grid gap-x-10 gap-y-5 lg:gap-y-10 lg:grid-cols-2 xl:grid-cols-3">
+        <div className="grid pb-5 gap-x-10 gap-y-5 lg:gap-y-10 lg:grid-cols-2 xl:grid-cols-3">
           {data.map((post) => (
             <UICard
               title={post.title}

@@ -1,10 +1,10 @@
 import React from "react";
-import Layout from "@/components/Layout";
+import Layout from "../components/Layout";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { Auth } from "aws-amplify";
 import { useRouter } from "next/router";
-import { AuthContext } from "context/AuthContext";
+import { AuthContext } from "../context/AuthContext";
 
 export default function SignIn() {
   const { register, handleSubmit } = useForm();
@@ -66,9 +66,6 @@ export default function SignIn() {
               Sign In
             </button>
             <div className="flex justify-between w-full text-sm">
-              <span className="inline-block font-semibold text-gray-600 duration-150 hover:text-gray-900">
-                Forgot password?
-              </span>
               <span className="inline-block font-semibold text-gray-600 duration-150 hover:text-gray-900">
                 <Link href="/signup">
                   <a>No account? Sign Up</a>
