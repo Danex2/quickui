@@ -9,7 +9,7 @@ import Cookies from "js-cookie";
 
 export default function SignUp() {
   const { register, handleSubmit } = useForm();
-  const [error, setError] = React.useState(null);
+  const [error, setError] = React.useState<{ message: string | null }>(null);
 
   const router = useRouter();
 
@@ -58,7 +58,6 @@ export default function SignUp() {
               className="w-full mb-3 form-input"
               placeholder="Username"
               required
-              ref={register}
               autoComplete="off"
             />
             <input

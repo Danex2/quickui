@@ -8,18 +8,20 @@ import ClassTag from "components/ClassTag";
 import { SRLWrapper } from "simple-react-lightbox";
 import Protected from "components/Protected";
 
+type UIResponseProps = {
+  id: string;
+  images: string[];
+  title: string;
+  characterClass: string;
+  description: string;
+  roles: string[];
+  code: string;
+};
+
 function UI() {
   const router = useRouter();
 
-  const [data, setData] = React.useState<{
-    id: string;
-    images: string[];
-    title: string;
-    characterClass: string;
-    description: string;
-    roles: string[];
-    code: string;
-  }>({
+  const [data, setData] = React.useState<UIResponseProps>({
     id: "",
     images: [],
     title: "",

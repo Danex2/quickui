@@ -5,7 +5,7 @@ import { Auth } from "aws-amplify";
 import { useRouter } from "next/router";
 
 export default function Navbar() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState<boolean>(false);
 
   const { user } = React.useContext(AuthContext);
 
