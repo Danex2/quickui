@@ -1,7 +1,5 @@
 type UI
   @model
-  @key(name: "ByClass", fields: ["characterClass"], queryField: "uiByClass")
-  @key(name: "ByRole", fields: ["roles"], queryField: "uiByRole")
   @auth(
     rules: [
       {

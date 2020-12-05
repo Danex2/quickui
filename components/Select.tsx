@@ -1,16 +1,20 @@
 type SelectProps = {
-  defaultValue: string;
   disabledOption: string;
   options: string[];
+  onChange: any;
 };
 
 export default function Select({
-  defaultValue,
   disabledOption,
   options,
+  onChange,
 }: SelectProps) {
   return (
-    <select className="w-auto form-select" defaultValue={defaultValue}>
+    <select
+      className="w-auto form-select"
+      defaultValue={"DEFAULT"}
+      onChange={onChange}
+    >
       <option value="DEFAULT" disabled>
         {disabledOption}
       </option>
