@@ -55,8 +55,9 @@ function UI() {
           <div key={data?.id} className="max-w-6xl p-3 duration-150 rounded">
             <div>
               <SRLWrapper>
-                {data.images.map((image) => (
+                {data.images.map((image, index) => (
                   <img
+                    key={index}
                     src={image}
                     alt={data.title}
                     className="object-fill w-full mb-3 rounded-md"

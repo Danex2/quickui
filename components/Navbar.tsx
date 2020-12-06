@@ -15,7 +15,7 @@ export default function Navbar() {
     <>
       <nav className="flex items-center justify-between px-10 py-5 text-white bg-gray-900">
         <h1 className="text-3xl font-bold">QuickUI</h1>
-        <div className="hidden space-x-4 text-sm font-bold uppercase sm:block">
+        <div className="hidden space-x-4 text-sm font-bold uppercase md:block">
           {user ? (
             <>
               <Link href="/">
@@ -54,7 +54,7 @@ export default function Navbar() {
           )}
         </div>
         <div
-          className="cursor-pointer sm:hidden"
+          className="cursor-pointer md:hidden"
           onClick={() => setOpen(!open)}
         >
           <svg viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 menu">
@@ -67,7 +67,7 @@ export default function Navbar() {
         </div>
       </nav>
       <div
-        className={`uppercase text-sm font-bold bg-gray-900 text-white px-10 py-2 duration-150 ${
+        className={`uppercase text-sm font-bold bg-gray-900 text-white px-10 py-2 duration-150 md:hidden ${
           open ? "block" : "hidden"
         }`}
       >

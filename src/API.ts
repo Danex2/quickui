@@ -124,12 +124,6 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
-export enum ModelSortDirection {
-  ASC = "ASC",
-  DESC = "DESC",
-}
-
-
 export type CreateUiMutationVariables = {
   input: CreateUIInput,
   condition?: ModelUIConditionInput | null,
@@ -221,62 +215,6 @@ export type ListUIsQueryVariables = {
 
 export type ListUIsQuery = {
   listUIs:  {
-    __typename: "ModelUIConnection",
-    items:  Array< {
-      __typename: "UI",
-      id: string,
-      title: string,
-      characterClass: string,
-      roles: Array< Role >,
-      code: string,
-      description: string,
-      images: Array< string | null > | null,
-      owner: string | null,
-      createdAt: string,
-      updatedAt: string,
-    } | null > | null,
-    nextToken: string | null,
-  } | null,
-};
-
-export type UiByClassQueryVariables = {
-  characterClass?: string | null,
-  sortDirection?: ModelSortDirection | null,
-  filter?: ModelUIFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-};
-
-export type UiByClassQuery = {
-  uiByClass:  {
-    __typename: "ModelUIConnection",
-    items:  Array< {
-      __typename: "UI",
-      id: string,
-      title: string,
-      characterClass: string,
-      roles: Array< Role >,
-      code: string,
-      description: string,
-      images: Array< string | null > | null,
-      owner: string | null,
-      createdAt: string,
-      updatedAt: string,
-    } | null > | null,
-    nextToken: string | null,
-  } | null,
-};
-
-export type UiByRoleQueryVariables = {
-  roles?: Role | null,
-  sortDirection?: ModelSortDirection | null,
-  filter?: ModelUIFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-};
-
-export type UiByRoleQuery = {
-  uiByRole:  {
     __typename: "ModelUIConnection",
     items:  Array< {
       __typename: "UI",
