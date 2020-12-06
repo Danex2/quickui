@@ -36,7 +36,10 @@ export default function SignIn() {
             onSubmit={handleSubmit(onSubmit)}
           >
             {error && (
-              <div className="absolute bottom-0 max-w-sm p-5 mb-20 text-red-800 bg-red-300 rounded">
+              <div
+                className="absolute bottom-0 max-w-sm p-5 mb-20 text-red-800 bg-red-300 rounded"
+                data-cy="error-message"
+              >
                 <p>{error.message}</p>
               </div>
             )}
@@ -49,6 +52,7 @@ export default function SignIn() {
               required
               ref={register}
               autoComplete="off"
+              data-cy="username"
             />
             <input
               type="password"
@@ -58,6 +62,7 @@ export default function SignIn() {
               required
               ref={register}
               autoComplete="off"
+              data-cy="password"
             />
             <button
               type="submit"
