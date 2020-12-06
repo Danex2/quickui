@@ -19,6 +19,8 @@ export default function SignUp() {
     try {
       const { username, password, email } = data;
 
+      console.log(data);
+
       await Auth.signUp({
         username,
         password,
@@ -59,6 +61,7 @@ export default function SignUp() {
               placeholder="Username"
               required
               autoComplete="off"
+              ref={register}
             />
             <input
               type="email"
