@@ -19,8 +19,6 @@ export default function SignUp() {
     try {
       const { username, password, email } = data;
 
-      console.log(data);
-
       await Auth.signUp({
         username,
         password,
@@ -49,7 +47,10 @@ export default function SignUp() {
             onSubmit={handleSubmit(onSubmit)}
           >
             {error && (
-              <div className="absolute bottom-0 max-w-sm p-5 mb-20 text-red-800 bg-red-300 rounded">
+              <div
+                className="absolute bottom-0 max-w-sm p-5 mb-20 text-red-800 bg-red-300 rounded"
+                data-cy="error-message"
+              >
                 <p>{error.message}</p>
               </div>
             )}
@@ -62,6 +63,7 @@ export default function SignUp() {
               required
               autoComplete="off"
               ref={register}
+              data-cy="username"
             />
             <input
               type="email"
@@ -71,6 +73,7 @@ export default function SignUp() {
               required
               ref={register}
               autoComplete="off"
+              data-cy="email"
             />
             <input
               type="password"
@@ -80,6 +83,7 @@ export default function SignUp() {
               required
               ref={register}
               autoComplete="off"
+              data-cy="password"
             />
             <input
               type="password"
@@ -89,6 +93,7 @@ export default function SignUp() {
               required
               ref={register}
               autoComplete="off"
+              data-cy="password2"
             />
             <button
               disabled={submitting ? true : false}

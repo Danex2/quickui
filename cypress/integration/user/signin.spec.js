@@ -32,6 +32,7 @@ describe("/signin", () => {
     cy.get("[data-cy=username]").type("Dane");
     cy.get("[data-cy=password]").type("password");
     cy.contains("button", "Sign In").click();
+    cy.wait(5000);
     cy.url().should("eq", Cypress.config().baseUrl);
   });
 });

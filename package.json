@@ -6,7 +6,8 @@
     "build": "next build && next export",
     "start": "next start",
     "test": "jest tests",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "autoprefixer": "^10.0.4",

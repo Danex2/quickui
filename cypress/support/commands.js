@@ -30,3 +30,11 @@ Cypress.Commands.add("login", () => {
   cy.get("[data-cy=password]").type("password");
   cy.contains("button", "Sign In").click();
 });
+
+Cypress.Commands.add("register", () => {
+  cy.get("[data-cy=username]").type("Dane");
+  cy.get("[data-cy=email]").type("dane@gmail.com");
+  cy.get("[data-cy=password]").type("password");
+  cy.get("[data-cy=password2]").type("password");
+  cy.contains("button", "Sign Up").click();
+});
